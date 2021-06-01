@@ -1,0 +1,42 @@
+
+\tikzstyle{connection}=[fill=black,draw,circle,inner sep=1.5pt]
+\begin{tikzpicture}
+
+  \renewcommand{\inpa}{$J$}
+  \renewcommand{\inpb}{$K$}
+  \renewcommand{\outa}{$Q_2$}
+  \renewcommand{\outb}{}
+  \input{jkff.tex}
+  
+  \node [shape=dff,scale=1.6] (DFF0) at (0,0) {};
+  
+  \renewcommand{\inpa}{$D$}
+  \renewcommand{\inpb}{}
+  \renewcommand{\outa}{$Q_1$}
+  \renewcommand{\outb}{}
+  \input{jkff.tex}
+  \node [shape=dff,scale=1.6] (DFF1) at (3,0) {};
+  
+  \renewcommand{\inpa}{$T$}
+  \renewcommand{\inpb}{}
+  \renewcommand{\outa}{$Q_0$}
+  \renewcommand{\outb}{$Q_0'$}
+  \input{jkff.tex}
+ \node [shape=dff,scale=1.6] (DFF2) at (6,0) {};
+ 
+ \draw[-latex,thick](7,-2.5) -- (-1.5,-2.5)node[connection]{} |- (-1.5,0) -- (-1,0) node[xshift=0.5cm]{$CK$};
+ \node (A) at (7.4,-2.2) {Clock};
+ \draw[-latex,thick](8,-2.5) -- (1.5,-2.5)node[connection]{} |- (1.5,0) -- (2,0) node[xshift=0.5cm]{$CK$};
+ 
+ \draw[-latex,thick](8,-2.5) -- (4.5,-2.5)node[connection]{} |- (4.5,0) -- (5,0) node[xshift=0.5cm]{$CK$};
+ 
+ \draw[-,thick](-1.2,-1.5)node[connection]{} |- (DFF0.K);
+ 
+\draw[-latex,thick] (DFF2.Qn) to[] ++(0.3,0) -| (8,2.5)|- (-1.5,2.5)-|(-1.5,1) |- (DFF0.D) ;
+
+\draw[-latex,thick] (DFF0.Q) -- (DFF1.D);
+\draw[-latex,thick] (DFF1.Q) -- (DFF2.D);
+\draw[-,thick](DFF2.Q)-- ++(0.5,0);
+\node[xshift=-1.3cm,yshift=-1.8cm]{$\text{1}$};
+ 
+ \end{tikzpicture}

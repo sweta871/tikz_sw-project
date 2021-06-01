@@ -1,0 +1,66 @@
+
+\tikzstyle{connection}=[fill=black,draw,circle,inner sep=1pt]
+\begin{tikzpicture}
+\renewcommand{\inpa}{$\text{$J_{0}$}$}
+  \renewcommand{\inpb}{$\text{$K_{0}$}$}
+  \renewcommand{\outa}{$\text{$Q_{0}$}$}
+  \renewcommand{\outb}{}
+  \input{jkff.tex}
+  \input{jk_downclk.tex} node[above] {CK};
+  
+  \node [shape=dff,scale=1.6] (DFF0) at (0,0) {};
+  
+  \renewcommand{\inpa}{$\text{$J_{1}$}$}
+  \renewcommand{\inpb}{$\text{$K_{1}$}$}
+  \renewcommand{\outa}{$\text{$Q_{1}$}$}
+  \renewcommand{\outb}{}
+  \input{jkff.tex}
+  \input{jk_downclk.tex}
+  \node [shape=dff,scale=1.6] (DFF1) at (4.5,0) {};
+  
+  \renewcommand{\inpa}{$\text{$J_{2}$}$}
+  \renewcommand{\inpb}{$\text{$K_{2}$}$}
+  \renewcommand{\outa}{$\text{$Q_{2}$}$}
+  \renewcommand{\outb}{}
+  \input{jkff.tex}
+  \input{jk_downclk.tex} node[above] {CK};
+ \node [shape=dff,scale=1.6] (DFF2) at (9,0) {};
+ 
+ 
+
+\draw[-,thick](2.25,2) node[and gate US,draw,minimum size=20pt,very thick] (and1) {};
+
+\draw[-,thick](6.75,2) node[and gate US,draw,minimum size=20pt,very thick] (and2) {};
+
+\draw[-,thick](11.25,2) node[and gate US,draw,minimum size=20pt,very thick] (and3) {};
+
+\draw[-,thick](-2.3,-2.5) |- (9,-2.5) |- (9,-1.3)  ;
+ \node (A) at (-1.8,-2.3) {$\text{\large{clock}}$};
+ 
+ \draw[-,thick]  (4.5,-2.5) node[connection] {} -| (4.5,-1.3);
+ \draw[-,thick] (0,-2.5) node[connection] {}  -| (0,-1.3);
+ 
+ 
+ \draw[-,thick]  (DFF0.K)     -| ++ (-0.1,0)     -| (-1.4,0)   -| (-1.4,2.5) ;
+ \draw[-,thick] (and1.input 1)    -- ++ (-4,0)    node[left] {1} ;
+ 
+  \draw[fill = black] (-1.4,2.1) circle (0.05cm);
+ 
+
+ \draw[-,thick] (DFF1.K) -- ++ (-0.4,0) -| (3.1,0) -| (3.1,2.2) -| (and2.input 1);
+ 
+ \draw[-,thick] (and1.output) -- ++ (0.35,0) node[connection] {};
+ 
+ \draw[-,thick] (DFF2.K) -- ++ (-0.4,0) -| (7.6,0) -| (7.6,2.2) -| (and3.input 1);
+ 
+ \draw[-,thick] (and2.output) -- ++ (0.35,0) node[connection] {};
+ \draw[-,thick] (and3.output) -- ++ (1,0);
+\draw[-,thick] (DFF2.Q) node[connection] {} -| ++ (0.5,1.2)  -| (and3.input 2) ;
+\draw[-,thick] (DFF1.Q) node[connection] {} -| ++ (0.5,1.2)  -| (and2.input 2) ;
+\draw[-,thick] (DFF0.Q) node[connection] {} -| ++ (0.5,1.2)  -| (and1.input 2) ;
+
+\draw[-,thick] (-1.4,0) node[connection] {} -- (-1,0);
+\draw[-,thick] (3.1,0) node[connection] {} -- (3.5,0);
+\draw[-,thick] (7.6,0) node[connection] {} -- (8,0);
+
+\end{tikzpicture}

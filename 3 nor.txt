@@ -1,0 +1,21 @@
+\begin{tikzpicture}[scale=1]
+ \draw
+(0,2) node[nor port] (mynor1) {}
+      (mynor1.in 1) to[short, -o] ++ (-1.35,0) node [anchor=east] {A}
+      
+       (mynor1.out)   node [anchor=south west] {X=(A+C)'} 
+(0,0) node[nor port] (mynor2) {}
+     
+      (mynor2.in 2) to[short, -o] ++ (-1.35,0) node [anchor=east] {B}
+       (mynor2.out)   node [anchor=north west] {Y=(B+C)'} 
+       
+        (mynor1.in 2) |- (mynor2.in 1) coordinate[pos=0.25] (b)
+        (b) to[short, -o] (-2.5,-0.3|-b) node [anchor=east] {C}
+        
+        
+(2,1) node[nor port] (mynor) {}
+      (mynor.out) to ++ (1.1,0)  node [anchor=west,text width=3cm] {F=(X+Y)'\\\;=((A+C)'+(B+C)')'\\\;=AB+C} 
+(mynor1.out) -- (mynor.in 1)
+(mynor2.out) -- (mynor.in 2);
+\end{tikzpicture}
+

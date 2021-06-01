@@ -1,0 +1,22 @@
+
+\tikzstyle{connection}=[fill=black,draw,circle,inner sep=1.5pt]
+\begin{tikzpicture}
+ \draw[-] (2,0) node[nand gate US,draw,minimum size=30pt,very thick] (nand1) {};
+ \draw[-] (5,0) node[not gate US,draw,minimum size=20pt,very thick] (not1) {};
+ \draw[-] (1.7,-2) node[not gate US,draw,minimum size=20pt,very thick] (not2) {};
+ \draw[-] (8,-1) node[nor gate US,draw,minimum size=30pt,very thick] (nor1) {};
+ 
+ 
+ \draw[-,thick] (nand1.output) -| (not1.input);
+ \draw[-,thick] (nand1.input 1) -| ++ (0,0) -| (0,1.2) -| (10,1.2) -| (10,-1)  node[connection] {} -| (nor1.output)  ;
+ 
+
+ \draw[-,thick] (not1.output) -- ++ (1,0) -|  (6.7,0) -| (6.7,-0.8) -| (nor1.input 1);
+ \draw[-,thick] (not2.output) -- ++ (4.1,0) -| (6.7,-1.2) -| (nor1.input 2);
+ 
+ \draw (nor1.output) -- ++(2,0) node[right] {$\textbf{B}$};
+ \draw[-,thick] (nand1.input 2) -| ++ (-1.35,0) -| (0,-3);
+ \draw[-,thick] (not2.input)  -- ++ (-1.35,0) node[connection] {};
+ \node[yshift=-2cm,xshift=-0.2cm] {$\text{A}$};
+ 
+\end{tikzpicture}

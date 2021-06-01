@@ -1,0 +1,12 @@
+\begin{karnaugh-map}[4][4][1][][]
+       \minterms{0,1,6,7,8,9,11,13,14,15}
+        \autoterms[0]
+       %\indeterminats{2,5}
+       \implicant{13}{11}
+       \implicant{7}{14}
+       \implicantedge{0}{1}{8}{9}
+        \draw[color=black, ultra thin] (0, 4) --
+    node [pos=0.6, above right, anchor=south west] {$yz$} 
+    node [pos=0.6, below left, anchor=north east] {$wx$} 
+    ++(135:1);
+    \end{karnaugh-map}

@@ -1,0 +1,77 @@
+
+\begin{tikzpicture}
+
+\renewcommand{\inpa}{$\text{$D_{A}$}$}
+  \renewcommand{\inpb}{}
+  \renewcommand{\outa}{}
+  \renewcommand{\outb}{}
+  \input{jkff.tex}
+  \input{jk_leftclk.tex}
+ \node [shape=dff,scale=1.4] (DFF0) at (7,-1.6) {}; 
+ 
+ \renewcommand{\inpa}{$\text{$D_{B}$}$}
+  \renewcommand{\inpb}{}
+  \renewcommand{\outa}{}
+  \renewcommand{\outb}{}
+  \input{jkff.tex}
+  \input{jk_leftclk.tex}
+ \node [shape=dff,scale=1.4] (DFF1) at (7,-5.6) {};
+ 
+  \renewcommand{\inpa}{$\text{$D_{C}$}$}
+  \renewcommand{\inpb}{}
+  \renewcommand{\outa}{}
+  \renewcommand{\outb}{}
+  \input{jkff.tex}
+  \input{jk_leftclk.tex}
+ \node [shape=dff,scale=1.4] (DFF2) at (7,-9) {};
+ 
+ 
+ 
+ 
+\draw[very thick]
+(2,0) node[and gate US,draw,minimum size=30pt,very thick] (and1) {}
+[thick](0,0.17)node[label=left:$A$] {} -- (and1.input 1)
+(0,-0.18) node[label=left:$C$] {} -- (and1.input 2)
+
+(2,-2) node[and gate US,draw,minimum size=30pt,very thick] (and2) {}
+[thick](0,-1.8)node[label=left:$B$] {} -- (and2.input 1)
+(0,-2.15) node[label=left:$\text{$\overline{C}$}$] {} -- (and2.input 2)
+
+(4.5,-1) node[or gate US,draw,minimum size=30pt,very thick] (or1) {}
+
+(2,-4) node[and gate US,draw,minimum size=30pt,very thick] (and3) {}
+[thick](0,-3.8)node[label=left:$\text{$\overline{A}$}$] {} -- (and3.input 1)
+(0,-4.15) node[label=left:$C$] {} -- (and3.input 2)
+
+(2,-6) node[and gate US,draw,minimum size=30pt,very thick] (and4) {}
+[thick](0,-5.8)node[label=left:$B$] {} -- (and4.input 1)
+(0,-6.15) node[label=left:$\text{$\overline{C}$}$] {} -- (and4.input 2)
+
+(2,-8.4) node[xnor gate US,draw,minimum size=30pt,very thick] (xnor1) {}
+[thick](0,-8.2)node[label=left:$A$] {} -- (xnor1.input 1)
+(0,-8.55) node[label=left:$B$] {} -- (xnor1.input 2)
+
+(4.5,-5) node[or gate US,draw,minimum size=30pt,very thick] (or2) {};
+
+
+\draw[-,thick] (and1.output) -- ++ (0.5,0) -| (3.5,-0.8) -| (or1.input 1);
+
+\draw[-,thick] (and2.output) -- ++ (0.5,0) -| (3.5,-1.2) -| (or1.input 2) ;
+
+\draw[-,thick] (and3.output) -- ++ (0.5,0) -| (3.5,-4.8) -| (or2.input 1);
+
+\draw[-,thick] (and4.output) -- ++ (0.5,0) -| (3.5,-5.2) -| (or2.input 2);
+
+\draw[-,thick] (or1.output) -- ++ (0.8,0);
+\draw[-,thick] (or2.output) -- ++ (0.8,0);
+\draw[-,thick] (DFF0.Q) -- ++ (0.8,0) node[right] {$\text{A}$};
+\draw[-,thick] (DFF1.Q) -- ++ (0.8,0) node[right] {$\text{B}$};
+\draw[-,thick] (DFF2.Q) -- ++ (0.8,0) node[right] {$\text{C}$};
+
+\draw[-,thick] (5.7,-11) -| (5.7,-1.6) -| (6.1,-1.6) 
+node (A) at (5.5,-11.3) {$\text{CLK}$};
+\draw[-,thick] (5.7,-5.6) -| (6.1,-5.6);
+\draw[-,thick] (5.7,-9) -| (6.1,-9);
+\draw[-,thick] (xnor1.output) -- (DFF2.D);
+
+\end{tikzpicture}

@@ -1,0 +1,43 @@
+
+\begin{tikzpicture}
+
+  \renewcommand{\inpa}{}
+  \renewcommand{\inpb}{}
+  \renewcommand{\outa}{}
+  \renewcommand{\outb}{}
+  \input{jkff.tex}
+  
+  \node [shape=dff,scale=1.6] (DFF0) at (0,0) {};
+  
+  
+ \draw[very thick] (4,0.65) node[xor gate US,draw,minimum size=30pt,very thick] (xor1) {};
+  
+  \renewcommand{\inpa}{}
+  \renewcommand{\inpb}{}
+  \renewcommand{\outa}{}
+  \renewcommand{\outb}{}
+  \input{jkff.tex}
+  \node [shape=dff,scale=1.6] (DFF1) at (8,0) {};
+  
+  
+\draw[-latex,thick](-2.3,-2.5) |- (6.4,-2.5) |- (6.4,-1.3) |- (6.8,-1) ;
+ \node (A) at (-2.2,-2.7) {$\text{clk}$};
+ \draw[-latex,thick] (-1.7,-1.5) |- (-1.7,-2.5) |-  (-1.3,-1);
+ 
+  
+   
+  \draw[-,thick] (xor1.output)--(DFF1.D) node[xshift=-0.5cm,yshift=0.5cm] {$\textbf{$D_{1}$}$};
+  
+  \draw[-,thick] (DFF0.D) to[] ++ (-1.3,0) |- (-1.3,-1.9) |- (1.5,-1.9) |- (DFF0.Qn) node[xshift=0.4cm,yshift=0.3cm]{$\textbf{$Q_{0}'$}$};
+  
+  \draw[-,thick] (DFF0.Q) to[] ++ (0.8,0) |- (xor1.input 1) node[xshift=-1.9cm,yshift=0.3cm] {$\textbf{$Q_{0}$}$};
+  
+  \draw[-,thick] (xor1.input 2) -- ++ (-1,0) |- (3,-1.9) -- (10,-1.9) |- (DFF1.Qn) node[right=1cm] {$\textbf{$Q_{1}'$}$};
+  
+  \draw[-,thick](DFF1.Q)-- ++(1,0)node[right]{$\textbf{${Q_1}$}$};
+  
+  \node[xshift=-2.6cm,yshift=0.7cm] {$\textbf{$D_{0}$}$};
+  
+  
+  
+ \end{tikzpicture}

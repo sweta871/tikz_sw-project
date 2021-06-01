@@ -1,0 +1,47 @@
+
+\begin{tikzpicture}
+\node[draw,
+        minimum width=2cm, 
+        minimum height=1cm] at (4,0) {Suppose Q contains 1,2,3,4,5};
+    
+ \node[draw,
+    rounded corners=0.5cm,
+    minimum height=1cm,
+    text width=2cm,
+    align =center] at (4,-2) (A){f(1,2,3,4,5)\\i=delete(1)};
+
+ \node[draw,
+    rounded corners=0.5cm,
+    text width=2cm,
+    minimum height=1cm,align=center] at (4,-4) (B) {f(2,3,4,5)\\i=delete(2)};
+
+ \node[draw,
+    rounded corners=0.5cm,
+    text width=2cm,
+    minimum height=1cm,align=center] at (4,-6) (C) {f(3,4,5)\\i=delete(3)};
+
+ \node[draw,
+    rounded corners=0.5cm,
+    text width=2cm,align=center,
+    minimum height=1cm] at (4,-8) (D) {f(4,5)\\i=delete(4)};
+
+\node[draw,
+    rounded corners=0.5cm,
+    text width=2cm,
+    minimum height=1cm,align=center] at (4,-10) (E) {f(5)\\i=delete(5)};
+    
+\node[draw,
+        minimum width=2cm, scale=0.5,
+        minimum height=1cm] at (4,-11) {\textbf{Now, insert() gets called}}; 
+    
+\draw[-latex] (A) edge (B)
+              (B) edge (C)
+              (C) edge (D)
+              (D) edge (E);
+\draw [-latex,thick] (E.east) -| ++(1,0) |- (D.east) node[pos=0.25,fill=white,inner sep=0] {\boxed{{5}}};
+\draw [-latex,thick] (D.west) -| ++(-1,0) |- (C.west) node[pos=0.25,fill=white,inner sep=0] {\boxed{{4}}};
+\draw [-latex,thick] (C.east) -| ++(1,0) |- (B.east) node[pos=0.25,fill=white,inner sep=0] {\boxed{{3}}};
+\draw [-latex,thick] (B.west) -| ++(-1,0) |- (A.west) node[pos=0.25,fill=white,inner sep=0] {\boxed{{2}}};
+
+\node[left] at (2.95,-1.5) {$\textbf{$\boxed{1}$}$};       
+\end{tikzpicture}

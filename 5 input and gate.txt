@@ -1,0 +1,8 @@
+\begin{tikzpicture}[minimum height=2cm,scale=2] 
+        \node[and gate US, draw,logic gate inputs=nniin] (A) {}; 
+        \foreach \a [evaluate=\a as \aeval using int(6-\a)]in {1,...,5}
+        {
+            \draw (A.input \a -| -1,0)node [left]{$A_{1\aeval}$} -- (A.input \a) ; 
+            }
+        \draw (A.output) -- ([xshift=0.8cm]A.output) node [anchor=west]{CS};
+    \end{tikzpicture} 

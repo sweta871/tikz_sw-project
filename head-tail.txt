@@ -1,0 +1,55 @@
+
+\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto]
+  
+  \tikzstyle{accepting}=[double distance=2pt, outer sep=1pt+\pgflinewidth]
+
+  \node[state]  (A)                     {$Start$};
+  \node[state]  (B) [above right of=A,xshift=2.5cm,yshift=2.5cm]  {$H$};
+  \node[state]  (C) [below right of=A,xshift=2.5cm,yshift=-2.5cm]  {$T$};
+  \node[state,accepting]  (D) [above right of=B]  {$H$};
+  \node[state]  (E) [below right of=B]  {$T$};
+  \node[state]  (F) [above right of=E]  {$H$};
+  \node[state,accepting]  (G) [below right of=E]  {$T$};
+  \node[state,accepting]  (H) [above right of=F]  {$H$};
+  \node[state]  (I) [below right of=F]  {$T$};
+  \node[state]  (J) [above right of=I]  {$H$};
+  \node[state,accepting]  (K) [below right of=I]  {$T$};
+  \node[state,accepting]  (L) [above right of=J]  {$H$};
+  \node[state]  (M) [below right of=J]  {$T$};
+  
+  \node[state]  (N) [above right of=C]  {$H$};
+  \node[state,accepting]  (O) [below right of=C]  {$T$};
+  \node[state,accepting]  (P) [above right of=N]  {$H$};
+  \node[state]  (Q) [below right of=N]  {$T$};
+  \node[state]  (R) [above right of=Q]  {$H$};
+  \node[state,accepting]  (S) [below right of=Q]  {$T$};
+  \node[state]  (T) [above right of=R]  {$H$};
+  \node[state,accepting]  (U) [below right of=R]  {$T$};
+  \node[state]  (V) [above right of=U]  {$H$};
+  \node[state,accepting]  (W) [below right of=U]  {$T$};
+ 
+   \path[-stealth,thick]
+   
+   (A) edge  (B)
+       edge  (C)
+   (B) edge  (D)
+       edge  (E)
+   (C) edge  (N)
+       edge  (O)
+   (E) edge  (F)
+       edge  (G)
+   (F) edge  (H)
+       edge  (I)
+   (I) edge  (J)
+       edge  (K)
+   (J) edge  (L)
+       edge  (M)
+   (N) edge  (P)
+       edge  (Q)
+   (Q) edge  (R)
+       edge  (S)
+   (R) edge  (T)
+       edge  (U)
+   (U) edge  (V)
+       edge  (W);
+\end{tikzpicture}

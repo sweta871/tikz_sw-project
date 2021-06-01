@@ -1,0 +1,32 @@
+
+\begin{tikzpicture}
+  \begin{axis}[ 
+  width=0.6\linewidth,
+  height=0.4\linewidth,
+  line width=1.5,
+  ymajorgrids,
+  %grid=ymajorgrids, % Display a grid
+ % tick label style={font=\normalsize},
+  %legend style={nodes={scale=0.4, transform shape}},
+  %label style={font=\normalsize},
+ % legend image post style={mark=triangle},
+  symbolic x coords={0,1,2,3,4,5,6,7},
+  xlabel={\textbf{Roundtrip Time}},
+ylabel={\textbf{Cwnd(in segments)}},
+xtick=data,
+ytick={2,4,6,8,10,12,14},
+%legend style={at={(1,1)}, anchor=north east,  draw=none, fill=none},
+xmin = 0,
+xmax =7,
+ymin = 0,
+ymax = 14
+  ]
+    \addplot[teal!70!white,mark=square*,dashed,every mark/.append style={solid,teal!70!white}] coordinates
+      {(0,1) (1,2) (2,4) (3,8) (4,9) (5,10) (6,11) (7,12)};
+      
+      \draw[->,>=stealth'] (2,7) -- (3,8);
+
+\node[below left] at (2,7.8) {$\textbf{ssthresh=8}$};
+
+  \end{axis}
+\end{tikzpicture}

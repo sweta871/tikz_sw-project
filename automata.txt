@@ -1,0 +1,59 @@
+
+\begin{tikzpicture}[node distance = 3cm,on grid,scale=0.7,auto,
+    every state/.style = {draw},
+    every initial by arrow/.style = {font = \large,text = red,thick,-stealth}]
+    \tikzstyle{accepting}=[double distance=2pt, outer sep=1pt+\pgflinewidth]
+    \begin{scope}
+
+   \node[initial,state,initial text=] (A)     {$Q_0$};
+   \node[state] (B) [below right of = A] {$Q_1$};
+   \node[state,accepting] (C) [above right of = B] {$Q_3$};
+   \node[state] (D) [above right of = A] {$Q_2$};
+ 
+   \path[-stealth,thick]
+   (A) edge node {a} (D)
+       edge node {b} (B)
+   (B) edge[loop below] node[below] {ab} ( )
+       edge [bend left=-1cm] node[below] {b} (C)
+       edge [bend left=1.2cm] node[above] {aa} (C)
+   (C) edge[loop right] node {a,b} ( )
+   (D) edge[bend left=-1cm] node[below] {a} (C)
+       edge[bend left=1cm] node {bb} (C)
+       edge[loop above] node {ba} ( );
+       
+       \draw[->,>=latex,ultra thick] (7,4) -- (12,4);
+   
+    \end{scope}
+    \begin{scope}[xshift=13cm,yshift=2cm]
+    \node[initial,state,initial text=] (A)     {$Q_0$};
+   \node[state,accepting] (B) [right of = A] {$Q_3$};
+ 
+   \path[-stealth,thick]
+   (A) edge [bend left=-1.2cm] node[below] {a(ba)*(a+bb)} (B)
+       edge [bend left=1.2cm] node[above] {b(ab)*(b+aa)} (B)
+   (B) edge [loop above] node{a,b} ( );
+   
+   \draw[->,>=latex,ultra thick] (2,-2) -- (2,-7);
+       
+    \end{scope}
+    
+    \begin{scope}[xshift=0cm,yshift=-7cm,node distance=7cm]
+    \node[initial,state,initial text=] (A)     {$Q_0$};
+   \node[state,accepting] (B) [right of = A] {$Q_3$};
+  
+   \path[-stealth,thick]
+   (A) edge node[below] {[a(ba)*(a+bb)+b(ab)*(b+aa)](a+b)*} (B);
+      \draw[->,>=latex,ultra thick] (12,2) -- (7,2);
+    \end{scope}
+    
+    
+     \begin{scope}[xshift=13.5cm,yshift=-7cm,node distance=6.5cm]
+    \node[initial,state,initial text=] (A)     {$Q_0$};
+   \node[state,accepting] (B) [right of = A] {$Q_3$};
+  
+   \path[-stealth,thick]
+   (A) edge node[below] {[a(ba)*(a+bb)+b(ab)*(b+aa)]} (B);
+      
+    \end{scope}
+    
+    \end{tikzpicture}

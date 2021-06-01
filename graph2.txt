@@ -1,0 +1,44 @@
+\begin{tikzpicture}[scale=0.6,transform shape,node distance = 1.5cm,on grid,auto,
+    every state/.style = {draw = black, fill = white},every initial by arrow/.style = {font = \Large,text = black,
+        thick,-stealth}]
+
+ \node[state] (q_0)  {$1$};
+ \node[state] (q_1)  [below left of=q_0]  {$2$};
+ \node[state] (q_2)  [below left of=q_1]  {$3$};
+ \node[state] (q_3)  [below left of=q_2]  {$4$};
+ \node[state] (q_4)  [below left of=q_3]  {$5$};
+ \node[state] (q_5)  [below left of=q_4]  {$6$};
+ \node[state] (q_6)  [below left of=q_5]  {$7$};
+ \node[state] (q_7)  [below left of=q_6]  {$8$};
+ \node[state] (q_8)  [below left of=q_7]  {$9$};
+ \node[state,style={draw=white}] (q_9)  [below right of=q_7,xshift=-0.5cm,yshift=-1cm]  {1};
+  \node[state,style={draw=white}] (q_9a)  [right of=q_9]  {3};
+ \node[state,style={draw=white}] (q_10)  [right of=q_9a]  {$7$};
+ \node[state,style={draw=white}] (q_11)  [right of=q_10]  {$15$};
+ \node[state,style={draw=white}] (q_12)  [right of=q_11]  {$31$};
+ \node[state,style={draw=white}] (q_13)  [right of=q_12]  {$63$};
+ \node[state,style={draw=white}] (q_14)  [right of=q_13]  {$127$};
+ \node[state,style={draw=white}] (q_15)  [right of=q_14]  {$255$};
+ 
+ 
+ \path [-stealth, thick]
+ 
+ (q_0) edge node {1} (q_1)
+ (q_1) edge node {2} (q_2)
+ (q_2) edge node {3} (q_3)
+ (q_3) edge node {4} (q_4)
+ (q_4) edge node {5} (q_5)
+ (q_5) edge node {6} (q_6)
+ (q_6) edge node {7} (q_7)
+ (q_7) edge node {8} (q_8);
+  \path [-stealth, dotted]
+   (q_7)    edge node {} (q_9)
+ (q_6) edge node {} (q_9a)
+ (q_5) edge node {} (q_10)
+ (q_4) edge node {} (q_11)
+ (q_3) edge node {} (q_12)
+ (q_2) edge node {} (q_13)
+ (q_1) edge node {} (q_14)
+ (q_0) edge node {} (q_15);
+ 
+\end{tikzpicture}
